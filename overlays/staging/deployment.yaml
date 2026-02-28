@@ -2,8 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: guestbook
+  namespace: staging
 spec:
-  replicas: 2  # ← Sera surchargé par overlays
+  replicas: 5
   selector:
     matchLabels:
       app: guestbook
@@ -14,7 +15,6 @@ spec:
     spec:
       containers:
       - name: guestbook
-        image: paulbouwer/hello-kubernetes:1.10
+        image: paulbouwer/hello-kubernetes:1.9
         ports:
         - containerPort: 8080
-
